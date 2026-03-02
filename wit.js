@@ -1,12 +1,15 @@
-export default {
-    name: "Witanime Arabic",
-    baseUrl: "https://witanime.com",
+class WitAnime {
+    constructor() {
+        this.name = "Witanime Arabic";
+        this.baseUrl = "https://witanime.com";
+    }
+
     async search(query) {
-        const url = `https://witanime.com/?s=${encodeURIComponent(query)}`;
-        const resp = await fetch(url);
-        const html = await resp.text();
+        const url = `${this.baseUrl}/?s=${encodeURIComponent(query)}`;
+        const response = await fetch(url);
+        const html = await response.text();
         
-        // This regex finds the anime cards on the Witanime search page
+        // This is a more robust way to grab the anime cards
         const regex = /<div class="anime-card-container">[\s\S]*?<a href="(.*?)">[\s\S]*?<img src="(.*?)"[\s\S]*?alt="(.*?)"/g;
         let match;
         const results = [];
@@ -18,6 +21,9 @@ export default {
                 poster: match[2]
             });
         }
-        return { results };
+        return results;
     }
-};
+}
+
+// This is the critical part Nuvio needs to see the plugin
+export default new WitAnime();
