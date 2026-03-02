@@ -1,10 +1,10 @@
 {
   "name": "My Arabic Anime Repo",
-  "authors": ["User"],
+  "authors": ["OmarRayeq"],
   "version": "1.0.0",
   "providers": [
     {
-      "id": "wit-anime-unique-id",
+      "id": "wit-anime-unique-001",
       "name": "Witanime Arabic",
       "version": "1.0.0",
       "file": "wit.js"
